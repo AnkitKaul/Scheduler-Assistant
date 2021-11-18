@@ -1,0 +1,22 @@
+{
+  "name": "microsoft_engage",
+  "version": "1.0.0",
+  "description": "This is my initial commit.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AnkitKaul/Microsoft_Engage.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AnkitKaul/Microsoft_Engage/issues"
+  },
+  "homepage": "https://github.com/AnkitKaul/Microsoft_Engage#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
