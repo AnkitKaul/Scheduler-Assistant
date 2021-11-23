@@ -20,8 +20,9 @@ const userSchema = new Schema({
     required:true,
     enum: ['CSE','Mech','EC'],
   },
-  certificate:{
-    type: File,
+  certificate: {
+    data: Buffer,
+    type: String,
     required:true,
   },
   password: {
@@ -57,7 +58,7 @@ userSchema.statics.authenticate = function (username, password, callback) {
   User.findOne({ username: username })
     .then(user => {
       if (!user) {
-        let err = new Error('User not present!!!!');
+        let err = new Error('Username not found.');
         err.status = 401;
         return callback(err);
       }
@@ -66,7 +67,7 @@ userSchema.statics.authenticate = function (username, password, callback) {
         if (result) {
           return callback(null, user);
         }
-        let err = new Error('Incorrect Password!!');
+        let err = new Error('Invalid password.');
         err.status = 401;
         return callback(err);
       });
