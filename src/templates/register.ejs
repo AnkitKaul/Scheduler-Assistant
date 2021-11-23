@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>
+		Registering As
+		<%= register_type %>
+	</title>
+	<%- include partials/html-head %>
+</head>
+
+<body class="register-mobile">
+	<%- include partials/navbar %>
+		<!-- Begin page content -->
+		<main class="container register big-font">
+			<div class="row justify-content-center fix">
+				<div class="register-col col-10 col-md-8 col-lg-5 align-self-center">
+					<!-- Registration block -->
+					<div class="row border rounded bg-dark">
+						<div class="col back px-3 pt-2 text-right" bg-white>
+							<a href="/register" type="button" class="close bg-white" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</a>
+						</div>
+
+						<div class="col-12 mb-2 px-5 pb-5">
+							<header class="title text-center mt-2 mb-3">
+								<%= register_type %> Registration
+							</header>
+							<% register_type = register_type[0].toLowerCase() + register_type.slice(1) %>
+								<form method="POST" action="/<%= register_type %>-register">
+									<div class="form-group">
+										<label for="username" class="sr-only">Username</label>
+										<input type="text" class="form-control" id="username" name="username" placeholder="Username" required>
+									</div>
+
+									<div class="form-group">
+										<label for="email" class="sr-only">Email</label>
+										<input type="email" class="form-control" id="email" name="email" placeholder="Email" required>
+									</div>
+
+									<div class="form-group">
+										<label for="password" class="sr-only">Password</label>
+										<input type="password" name="password" class="form-control" id="password" placeholder="Password" required>
+									</div>
+
+									<div class="form-group">
+										<label for="confPassword" class="sr-only">Confirm password</label>
+										<input type="password" name="confPassword" class="form-control" id="confPassword" placeholder="Confirm password" required>
+									</div>
+									<div class="form-group">
+										<label for="branch" class="sr-only">Branch</label>
+										<select>
+                                            <option value = "CSE"> Computer Science and Engineering   
+                                            </option>  
+                                            <option value = "Mech"> Mechanical   
+                                            </option>  
+                                            <option value = "EC"> Electronics and Communication
+                                            </option>  
+                                        </select>
+									</div>
+									<div class="form-group">
+										<label for="certificate" class="sr-only">Attach certificate</label>
+										<input type="file" name="certificate" class="form-control" id="certificate" required>
+									</div>
+									<button type="submit" class="btn btn-primary btn-block">Register</button>
+								</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</main>
+
+		<!-- Sticky Footer -->
+		<%- include partials/footer %>
+
+			<!-- Bootstrap core JavaScript
+    ================================================== -->
+			<!-- Placed at the end of the document so the pages load faster -->
+			<%- include partials/html-scripts %>
+				<script type="text/javascript" src="/assets/register-form.js"></script>
+</body>
+
+</html>
