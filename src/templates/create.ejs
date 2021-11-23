@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Create New Class</title>
+    <%- include partials/html-head %>
+        <!-- Include pickadate -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pickadate.js/3.5.6/compressed/themes/default.css" integrity="sha256-HJnF0By+MMhHfGTHjMMD7LlFL0KAQEMyWB86VbeFn4k="
+        crossorigin="anonymous" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pickadate.js/3.5.6/compressed/themes/default.date.css"
+        integrity="sha256-Ex8MCGbDP5+fEwTgLt8IbGaIDJu2uj88ZDJgZJrxA4Y=" crossorigin="anonymous" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pickadate.js/3.5.6/compressed/themes/default.time.css"
+        integrity="sha256-0GwWH1zJVNiu4u+bL27FHEpI0wjV0hZ4nSSRM2HmpK8=" crossorigin="anonymous" />
+        <!-- Quilljs -->
+        <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+</head>
+
+<body class="create-page">
+
+    <%- include partials/navbar %>
+
+    <!-- Begin page content -->
+    <main class="container">
+        <div class="row big-font">
+            <div class="col-md-10 col-lg-8">
+                <header class="title mt-3 mb-2">Schedule Class</header>
+                <form class="needs-validation ml-1" novalidate autocomplete="off">
+                    <div class="form-group mt-2">
+                        <label for="event-name">Course Name</label>
+                        <input type="text" class="form-control" id="event-name" placeholder="Course Name" required>
+                        <div class="invalid-feedback">
+                            Event Name is required.
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="overview">Summary</label>
+                        <textarea class="form-control" id="overview" rows="3" placeholder="Summary of Class" required></textarea>
+                        <div class="invalid-feedback">
+                            Event Summary is required.
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="date">Class Date</label>
+                        <input class="form-control" id="date" placeholder="Class date" required>
+                        <div class="invalid-feedback">
+                            Event Date is required.
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="start-time">Start Time</label>
+                            <input class="form-control" id="start-time" placeholder="Start time" required>
+                            <div class="invalid-feedback" id="start-feedback">
+                                Event start time is required.
+                            </div>
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label for="end-time">End Time</label>
+                            <input class="form-control" id="end-time" placeholder="End time" required>
+                            <div class="invalid-feedback">
+                                Event end time is required.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                            <label for="capacity">Capacity</label>
+                            <input type="number" class="form-control" id="capacity" min="1" placeholder="Number of seats" required>
+                            <div class="invalid-feedback">
+                                Please enter a valid number.
+                            </div>
+                        </div>
+                    <button class="btn btn-primary mb-5 submit-btn" type="submit">Submit</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <%- include partials/footer %>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+
+    <%- include partials/html-scripts %>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/pickadate.js/3.5.6/compressed/picker.js" integrity="sha256-A1y8n02GW5dvJFkEOX7UCbzJoko8kqgWUquWf9TWFS8="
+        crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/pickadate.js/3.5.6/compressed/picker.time.js" integrity="sha256-vFMKre5X5oQN63N+oJU9cJzn22opMuJ+G9FWChlH5n8="
+        crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/pickadate.js/3.5.6/compressed/picker.date.js" integrity="sha256-rTh8vmcE+ZrUK3k9M6QCNZIBmAd1vumeuJkagq0EU3g="
+        crossorigin="anonymous"></script>
+        <!-- Include the Quill library -->
+        <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+        <script src="/assets/create-form.js"></script>
+</body>
+
+</html>
