@@ -1,1 +1,1 @@
-This is my initial commit.
+It is a Scheduler which acts as an interface between Students and Faculty to schedule their classes and the Students can opt in to join the class offline.
