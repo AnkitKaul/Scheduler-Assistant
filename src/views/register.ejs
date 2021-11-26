@@ -3,7 +3,7 @@
 
 <head>
 	<title>
-		Registering As
+		Register As
 		<%= register_type %>
 	</title>
 	<%- include partials/html-head %>
@@ -15,9 +15,9 @@
 		<main class="container register big-font">
 			<div class="row justify-content-center fix">
 				<div class="register-col col-10 col-md-8 col-lg-5 align-self-center">
-					<!-- Registration block -->
+					<!-- white block -->
 					<div class="row border rounded bg-dark">
-						<div class="col back px-3 pt-2 text-right" bg-white>
+						<div class="col back px-3 pt-2 text-right">
 							<a href="/register" type="button" class="close bg-white" aria-label="Close">
 								<span aria-hidden="true">&times;</span>
 							</a>
@@ -50,7 +50,7 @@
 									</div>
 									<div class="form-group">
 										<label for="branch" class="sr-only">Branch</label>
-										<select>
+										<select class="form-control" name="branch">
                                             <option value = "CSE"> Computer Science and Engineering   
                                             </option>  
                                             <option value = "Mech"> Mechanical   
@@ -61,7 +61,7 @@
 									</div>
 									<div class="form-group">
 										<label for="certificate" class="sr-only">Attach certificate</label>
-										<input type="file" name="certificate" class="form-control" id="certificate" required>
+										<input type="file" name="certificate" class="form-control-file text-white" id="certificate" required>
 									</div>
 									<button type="submit" class="btn btn-primary btn-block">Register</button>
 								</form>
