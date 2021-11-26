@@ -25,15 +25,6 @@ main.sign-in {
   background: white;
 }
 
-.search {
-  background: white;
-  border: 1px solid #CED4DA;
-}
-
-.fa-search {
-  color: rgba(0, 0, 0, 0.5);
-}
-
 .nav-link {
   font-size: 1.1em;
 }
@@ -108,9 +99,6 @@ li:not(.active) .nav-link:hover {
   margin: 0 !important;
 }
 
-form[action="search"].input-group {
-  width: 15em !important;
-}
 
 .dropdown-menu {
   width: 10em;
