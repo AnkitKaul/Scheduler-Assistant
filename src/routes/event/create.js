@@ -10,18 +10,22 @@ router.get('/', isStaff, (req, res) => {
   res.render('create', res.locals.options);
 });
 
-router.post('/', isStaff, (req, res) => {
+router.post('/', isStaff, async (req, res) => {
   let { eventName, summary, startDate, endDate, capacity} = req.body;
   startDate = new Date(startDate);
   endDate = new Date(endDate);
-  Event.create({
+  let username = res.locals.options.username;
+  let manager = await User.findOne({username});
+  let branch = manager.branch;
+Event.create({
     eventName,
     summary,
     startDate,
     endDate,
     capacity,
+    branch,
+    manager_username: res.locals.options.username,
   }).then(event => {
-    console.log(event);
     User.findOneAndUpdate(
       { username: res.locals.options.username },
       {
@@ -34,7 +38,6 @@ router.post('/', isStaff, (req, res) => {
       }
     ).then(() => res.status(201).json({ id: event.eventId }));
   }).catch(error => {
-    console.log(error);
     res.status(500).json({ message: 'Error when creating event' });
   });
 });

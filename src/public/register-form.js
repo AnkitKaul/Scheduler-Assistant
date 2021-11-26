@@ -1,14 +1,14 @@
 // check matching password
-const user_password = $('#password')[0];
+const pw = $('#password')[0];
 const confPw = $('#confPassword')[0];
-user_password.onchange = () => checkPw();
+pw.onchange = () => checkPw();
 confPw.onchange = () => checkPw();
 
 function checkPw() {
-  const pwValue = user_password.value;
+  const pwValue = pw.value;
   const confPwValue = confPw.value;
   if (pwValue !== confPwValue) {
-    confPw.setCustomValidity('Password is Incorrect');
+    confPw.setCustomValidity('Password does not match.');
   } else {
     confPw.setCustomValidity('');
   }

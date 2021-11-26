@@ -15,11 +15,24 @@ router.use('/update', updateRouter);
 router.use('/delete', deleteRouter);
 
 // view middleware
-router.get(['/id/:eventID', '/id/:eventID/checkout'], (req, res, next) => {
-  Event.findOne({ eventId: req.params.eventID }).then(result => {
+router.get('/id/:eventID', async (req, res, next) => {
+  let username = res.locals.options.username;
+  let user;
+  if (username){
+     user = await User.findOne({username});
+
+  }
+  
+  Event.findOne({eventId: req.params.eventID}).then(result => {
     if (!result) {
       return res.status(404).render('error_views/class-not-found', {
         error: 'Class ID Error: ' + req.params.eventID,
+        link: '/'
+      });
+    }
+    if (user && result.branch !== user.branch){
+      return res.status(403).render('error_views/auth-error', {
+        error: 'Class Not applicable to ' + user.branch,
         link: '/'
       });
     }

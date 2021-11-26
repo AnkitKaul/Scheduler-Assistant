@@ -11,9 +11,14 @@ const eventSchema = new Schema({
     required: true
   },
   summary: {
-    type: String
+    type: String,
+    required: true
   },
   startDate: {
+    type: Date,
+    required: true
+  },
+  endDate: {
     type: Date,
     required: true
   },
@@ -24,6 +29,16 @@ const eventSchema = new Schema({
   currentBookings: {
     type: Number,
     default: 0
+  },
+  branch: {
+    type: String,
+    required: true,
+    enum: ['CSE','Mech','EC'],
+    default: 'CSE'
+  },
+  manager_username: {
+    type: String,
+    required: true
   }
 });
 

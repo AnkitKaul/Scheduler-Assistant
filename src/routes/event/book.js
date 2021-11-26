@@ -16,7 +16,11 @@ router.post('/', isSignedIn, async (req, res, next) => {
         res.json({ error: { type: 'eventFull', message: 'No seats available!!' } });
       } else if (event.endDate < new Date()) {
         res.json({ error: { type: 'eventEnded', message: 'Class Ended!!' } });
-      } else if (user.eventsBooked.includes(event.eventId)) {
+      } 
+      else if(user.branch !== event.branch){
+        res.json({ error: { type: 'eventNotApplicable', message: 'Not Available to your branch!!'}});
+      }
+      else if (user.eventsBooked.includes(event.eventId)) {
         res.json({ error: { type: 'alreadyBooked', message: 'You have already registered into this class!!' } });
       } else {
         //process booking

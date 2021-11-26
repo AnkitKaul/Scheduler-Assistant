@@ -1,8 +1,8 @@
 import moment from 'moment';
 
 export function parseEvents(inputEvents) {
-  let Events_output = inputEvents.map(parseEvent);
-  return Events_output;
+  let outputEvents = inputEvents.map(parseEvent);
+  return outputEvents;
 }
 
 export function parseEvent(inputEvent) {
