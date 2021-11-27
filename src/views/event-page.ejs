@@ -14,9 +14,9 @@
     <main class="container">
       <div class="card-flex mt-3">
         <header class="title mb-0">
-          <%= event.eventName %>
+          <%= event.eventName %> 
         </header>
-				<% if (type === 'staff' && event.manager_username === username) { %>
+				<% if (type === 'staff' && event.manager.username === username) { %>
 					<a href="/event/update/id/<%= event.eventId %>" class="btn btn-sm btn-secondary ml-3">Edit</a>
 					<button class="toggle btn btn-sm btn-danger ml-2" data-toggle="modal" data-target="#deleteModal" data-href="/event/delete/id/<%= event.eventId %>">Delete</button>
 				<% } %>
@@ -52,10 +52,29 @@
               </i>
             </div>
           </div>
+          <div class="info">
+            <div class="mb-2">
+              <i class="fa fa-map-marker-alt">
+                <span class="font-italic">
+                  <%= event.room %>
+                </span>
+              </i>
+            </div>
+          </div>
+          <div class="info">
+            <div class="mb-2">
+              <i class="far fa-user">
+                <span class="font-italic">
+                  <%= event.manager.username %>
+                </span>
+              </i>
+            </div>
+          </div>
+          
           <div class="row mb-5">
             <div class="col-12 col-md-8">
             <% if (event.endDate > new Date() && booked) { %>
-            <div class="alert alert-info mt-3 mb-3">You are currently booked into this event.</div>
+            <div class="alert alert-info mt-3 mb-3">You are currently booked into this class.</div>
             <% } %>
 
             <% if (event.endDate < new Date()) { %>
@@ -66,6 +85,14 @@
                 <div class="card-body">
                   <div class="card-text">
                     <%- event.summary %>
+                  </div>
+                </div>
+              </div>
+              <div class="card mt-3 mb-3">
+                <h5 class="card-header">Prerequisite</h5>
+                <div class="card-body">
+                  <div class="card-text">
+                    <%- event.prerequisites %>
                   </div>
                 </div>
               </div>

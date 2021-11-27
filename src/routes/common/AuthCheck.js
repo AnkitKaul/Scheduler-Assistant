@@ -21,8 +21,8 @@ export function isStaff(req, res, next) {
 }
 
 export async function isManager(req,res,next) {
-  let event = await Event.findOne({ eventId: req.params.eventID });
-  if (event.manager_username === res.locals.options.username) return next();
+  let event = await Event.findOne({ eventId: req.params.eventID }).populate("manager");
+  if (event.manager.username === res.locals.options.username) return next();
   return res.status(err.status).render('error_views/auth-error', {
     error: err.message,
     link: '/'

@@ -25,7 +25,7 @@ router.get('/id/:eventID/', isStaff, isManager, async (req, res) => {
 });
 
 router.put('/id/:eventID/', isStaff,isManager, async (req, res) => {
-  let { eventName, summary, startDate, endDate, capacity} = req.body;
+  let { eventName, summary, startDate, endDate, capacity, room, prerequisites} = req.body;
   startDate = new Date(startDate);
   endDate = new Date(endDate);
 
@@ -34,14 +34,16 @@ router.put('/id/:eventID/', isStaff,isManager, async (req, res) => {
   if (capacity < event.currentBookings) {
     return res.json({ error: 'Error Class Capacity must be higher than current!!!' });
   }
-
-  Event.findOneAndUpdate({ eventId: req.params.eventID }, {
+  let event_details = {
     eventName,
     summary,
     startDate,
     endDate,
     capacity,
-  }).then(event => {
+    room,
+  }
+  if(prerequisites) { event_details.prerequisites = prerequisites;  }
+  Event.findOneAndUpdate({ eventId: req.params.eventID },event_details).then(event => {
     User.findOneAndUpdate(
       { username: res.locals.options.username },
       {

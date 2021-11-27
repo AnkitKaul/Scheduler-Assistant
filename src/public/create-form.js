@@ -76,7 +76,9 @@ form.onsubmit = event => {
 		startDate: startDate.toJSON(),
 		endDate: endDate.toJSON(),
 		capacity: $('#capacity').val(),
+		room: $('#room').val().trim(),
 	};
+	if($('#prerequisites').val().trim()) { newEvent.prerequisites = $('#prerequisites').val().trim() }
 	//disable submit button
 	$('.submit-btn').attr('disabled', true);
 	

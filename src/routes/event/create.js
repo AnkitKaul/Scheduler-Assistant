@@ -11,21 +11,24 @@ router.get('/', isStaff, (req, res) => {
 });
 
 router.post('/', isStaff, async (req, res) => {
-  let { eventName, summary, startDate, endDate, capacity} = req.body;
+  let { eventName, summary, startDate, endDate, capacity, room, prerequisites} = req.body;
   startDate = new Date(startDate);
   endDate = new Date(endDate);
   let username = res.locals.options.username;
   let manager = await User.findOne({username});
   let branch = manager.branch;
-Event.create({
+  let event_details = {
     eventName,
     summary,
     startDate,
     endDate,
     capacity,
     branch,
-    manager_username: res.locals.options.username,
-  }).then(event => {
+    manager: manager._id,
+    room,
+  }
+  if(prerequisites) { event_details.prerequisites = prerequisites;  }
+  Event.create(event_details).then(event => {
     User.findOneAndUpdate(
       { username: res.locals.options.username },
       {

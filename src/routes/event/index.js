@@ -23,7 +23,7 @@ router.get('/id/:eventID', async (req, res, next) => {
 
   }
   
-  Event.findOne({eventId: req.params.eventID}).then(result => {
+  Event.findOne({eventId: req.params.eventID}).populate("manager").then(result => {
     if (!result) {
       return res.status(404).render('error_views/class-not-found', {
         error: 'Class ID Error: ' + req.params.eventID,

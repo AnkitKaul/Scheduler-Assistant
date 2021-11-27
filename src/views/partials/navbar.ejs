@@ -1,7 +1,10 @@
 <!-- Fixed navbar -->
 <header class="header">
-  <nav class="p-3 navbar navbar-expand-lg navbar-light fixed-top bg-white">
+  <nav class="p-3 navbar navbar-expand-lg navbar-dark fixed-top bg-dark">
     <div class="container">
+      <a class="navbar-brand" href="/">
+        <img src="/assets/logo1.png"  height="50" class="d-inline-block align-top" alt="logo">
+      </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse"
         aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -31,15 +34,15 @@
               <a class="nav-link" href="/manage-events">Manage Class Details</a>
             </li>
             <% } %>
-              <% if (type) { %>
-                <li class="nav-item 
-            <% if (page === 'booked-events') { %>
-            active
-            <% } %>
-          ">
-                  <a class="nav-link" href="/booked-events">Scheduled Class</a>
-                </li>
-                <% } %>
+          <% if (type == "student") { %>
+              <li class="nav-item 
+          <% if (page === 'booked-events') { %>
+          active
+          <% } %>
+        ">
+                <a class="nav-link" href="/booked-events">My Class</a>
+              </li>
+              <% } %>
         </ul>
         
         <% if (username) { %>

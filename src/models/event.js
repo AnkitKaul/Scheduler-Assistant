@@ -1,5 +1,6 @@
 import mongoose from 'mongoose';
 import Counter from './counter';
+import User from './user';
 const Schema = mongoose.Schema;
 
 const eventSchema = new Schema({
@@ -36,9 +37,19 @@ const eventSchema = new Schema({
     enum: ['CSE','Mech','EC'],
     default: 'CSE'
   },
-  manager_username: {
+  manager: {
+    type: mongoose.Types.ObjectId,
+    required: true,
+    ref: "User"
+  },
+  room: {
     type: String,
-    required: true
+    required: true,
+    default: 'NA'
+  },
+  prerequisites: {
+    type: String,
+    default: 'No Prerequisite required'
   }
 });
 
