@@ -4,9 +4,12 @@ It is a Scheduler Assistant which acts as an assistant or interface between Stud
 1) Firstly use npm install command in the project directory to install all dependencies
 2) For proper working use command npm-audit-fix
 3) Start the MongoDB server before the running the project
-4) Run the project using npm start command in the project directory
-5) Go to browser and type in http://localhost:3000/ and you would be able to view Scheduler Assistant
-6) You can register yourself as student or faculty and can explore all the features present in the project
+4) Create a .env file using:
+- SESSION_SECRET= ****
+- DB_URI= ******
+5) Run the project using npm start command in the project directory
+6) Go to browser and type in http://localhost:3000/ and you would be able to view Scheduler Assistant
+7) You can register yourself as student or faculty and can explore all the features present in the project
 
 
 ## Features of the application for Students:
